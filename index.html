@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Zone - Technical Assessment</title>
+    <meta name="description" content="Complete 500-question technical assessment for Study Zone platform evaluation">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Study Zone Technical Assessment</h1>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-badge">
+                        <span class="stat-value" id="progress-count">0</span>
+                        <span class="stat-label">/ 500 Answered</span>
+                    </div>
+                    <div class="stat-badge accent">
+                        <span class="stat-value" id="total-score">0</span>
+                        <span class="stat-label">/ 2000 Points</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </header>
+
+        <!-- Navigation Sidebar -->
+        <aside class="sidebar">
+            <nav class="section-nav">
+                <h3>Sections</h3>
+                <ul id="section-list">
+                    <!-- Populated by JavaScript -->
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary" onclick="exportResults()">
+                    <span>📥</span> Export Results
+                </button>
+                <button class="btn btn-danger" onclick="resetAssessment()">
+                    <span>🔄</span> Reset All
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="welcome-banner" id="welcome-banner">
+                <div class="welcome-content">
+                    <h2>🚀 Welcome to the Technical Assessment</h2>
+                    <p>This comprehensive 500-question assessment evaluates your platform across 7 critical areas. Answer honestly to get an accurate evaluation of your production readiness.</p>
+                    <div class="scoring-guide">
+                        <h4>Scoring Guide</h4>
+                        <div class="score-options">
+                            <span class="score-option a">A = 4 pts</span>
+                            <span class="score-option b">B = 3 pts</span>
+                            <span class="score-option c">C = 2 pts</span>
+                            <span class="score-option d">D = 1 pt</span>
+                            <span class="score-option e">E = 0 pts</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-large" onclick="startAssessment()">
+                        Start Assessment
+                    </button>
+                </div>
+            </div>
+
+            <div class="assessment-container" id="assessment-container" style="display: none;">
+                <div class="section-header" id="current-section-header">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <div class="questions-container" id="questions-container">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <div class="navigation-buttons">
+                    <button class="btn btn-secondary" id="prev-section" onclick="navigateSection(-1)">
+                        ← Previous Section
+                    </button>
+                    <button class="btn btn-primary" id="next-section" onclick="navigateSection(1)">
+                        Next Section →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="results-panel" id="results-panel" style="display: none;">
+                <div class="results-header">
+                    <h2>📈 Assessment Results</h2>
+                    <p>Your platform readiness evaluation</p>
+                </div>
+                
+                <div class="overall-score-card">
+                    <div class="score-circle" id="score-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="score-bg" cx="50" cy="50" r="45"/>
+                            <circle class="score-fill" cx="50" cy="50" r="45" id="score-ring"/>
+                        </svg>
+                        <div class="score-text">
+                            <span class="score-value" id="final-score-value">0</span>
+                            <span class="score-max">/ 2000</span>
+                        </div>
+                    </div>
+                    <div class="score-description">
+                        <h3 id="readiness-level">Evaluating...</h3>
+                        <p id="readiness-description"></p>
+                    </div>
+                </div>
+
+                <div class="section-scores" id="section-scores">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <div class="priority-actions" id="priority-actions">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <button class="btn btn-primary btn-large" onclick="showAssessment()">
+                    Review Answers
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
