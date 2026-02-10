@@ -337,6 +337,10 @@ class AssessmentApp {
 }
 
 // Global functions
+function navigateSection(direction) {
+    app.navigateSection(direction);
+}
+
 function startAssessment() {
     document.getElementById('welcome-banner').style.display = 'none';
     document.getElementById('assessment-container').style.display = 'block';
