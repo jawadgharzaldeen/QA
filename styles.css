@@ -974,7 +974,7 @@ body::before {
     flex-direction: column;
     gap: 1rem;
     z-index: 1000;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s ease;
 }
 
