@@ -419,5 +419,9 @@ function resetAssessment() {
     }
 }
 
+function showAssessment() {
+    app.showAssessment();
+}
+
 // Initialize app
 const app = new AssessmentApp();
