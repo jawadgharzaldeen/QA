@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,11 @@
     <meta name="description" content="Complete 500-question technical assessment for Study Zone platform evaluation">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="app-container">
         <!-- Header -->
@@ -58,7 +61,8 @@
             <div class="welcome-banner" id="welcome-banner">
                 <div class="welcome-content">
                     <h2>🚀 Welcome to the Technical Assessment</h2>
-                    <p>This comprehensive 500-question assessment evaluates your platform across 7 critical areas. Answer honestly to get an accurate evaluation of your production readiness.</p>
+                    <p>This comprehensive 500-question assessment evaluates your platform across 7 critical areas.
+                        Answer honestly to get an accurate evaluation of your production readiness.</p>
                     <div class="scoring-guide">
                         <h4>Scoring Guide</h4>
                         <div class="score-options">
@@ -72,9 +76,9 @@
                     <button class="btn btn-primary btn-large" onclick="startAssessment()">
                         Start Assessment
                     </button>
-                                    <button class="btn btn-secondary" onclick="exportResults()">
-                    <span>📥</span> Export Results
-                </button>
+                    <button class="btn btn-secondary" onclick="exportResults()">
+                        <span>📥</span> Export Results
+                    </button>
                 </div>
             </div>
 
@@ -101,12 +105,12 @@
                     <h2>📈 Assessment Results</h2>
                     <p>Your platform readiness evaluation</p>
                 </div>
-                
+
                 <div class="overall-score-card">
                     <div class="score-circle" id="score-circle">
                         <svg viewBox="0 0 100 100">
-                            <circle class="score-bg" cx="50" cy="50" r="45"/>
-                            <circle class="score-fill" cx="50" cy="50" r="45" id="score-ring"/>
+                            <circle class="score-bg" cx="50" cy="50" r="45" />
+                            <circle class="score-fill" cx="50" cy="50" r="45" id="score-ring" />
                         </svg>
                         <div class="score-text">
                             <span class="score-value" id="final-score-value">0</span>
@@ -137,4 +141,5 @@
     <script src="questions.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>
