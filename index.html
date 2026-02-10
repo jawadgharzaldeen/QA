@@ -138,6 +138,37 @@
         </main>
     </div>
 
+    <!-- Floating Navigation Frame -->
+    <div class="floating-nav" id="floating-nav">
+        <button id="page-up-btn" class="float-btn float-btn-up" title="Page Up">
+            <span>⬆️</span>
+        </button>
+        <button id="page-down-btn" class="float-btn float-btn-down" title="Page Down">
+            <span>⬇️</span>
+        </button>
+        <button id="go-to-question-btn" class="float-btn float-btn-goto" title="Go to Question">
+            <span>🔍</span>
+        </button>
+    </div>
+
+    <!-- Go to Question Modal -->
+    <div id="goto-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Go to Specific Question</h3>
+                <button class="modal-close" onclick="closeGotoModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="number" id="question-input" placeholder="Enter question number (1-500)" min="1" max="500">
+                <p class="help-text">Enter a question number between 1 and 500</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeGotoModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="goToQuestion()">Go</button>
+            </div>
+        </div>
+    </div>
+
     <script src="questions.js"></script>
     <script src="app.js"></script>
 </body>

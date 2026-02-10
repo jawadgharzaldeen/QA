@@ -423,5 +423,122 @@ function showAssessment() {
     app.showAssessment();
 }
 
+// Floating Navigation
+function initFloatingNav() {
+    const floatingNav = document.getElementById('floating-nav');
+    const pageUpBtn = document.getElementById('page-up-btn');
+    const pageDownBtn = document.getElementById('page-down-btn');
+    const gotoBtn = document.getElementById('go-to-question-btn');
+
+    if (!pageUpBtn || !pageDownBtn) return;
+
+    // Page Up functionality
+    pageUpBtn.addEventListener('click', () => {
+        window.scrollBy({
+            top: -window.innerHeight * 0.9,
+            behavior: 'smooth'
+        });
+    });
+
+    // Page Down functionality
+    pageDownBtn.addEventListener('click', () => {
+        window.scrollBy({
+            top: window.innerHeight * 0.9,
+            behavior: 'smooth'
+        });
+    });
+
+    // Go to Question functionality
+    if (gotoBtn) {
+        gotoBtn.addEventListener('click', () => {
+            openGotoModal();
+        });
+    }
+
+    // Show/hide floating nav based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            floatingNav.classList.add('visible');
+        } else {
+            floatingNav.classList.remove('visible');
+        }
+    });
+}
+
+// Modal functions for Go to Question
+function openGotoModal() {
+    const modal = document.getElementById('goto-modal');
+    const input = document.getElementById('question-input');
+    if (modal) {
+        modal.style.display = 'flex';
+        input.focus();
+        input.value = '';
+    }
+}
+
+function closeGotoModal() {
+    const modal = document.getElementById('goto-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function goToQuestion() {
+    const input = document.getElementById('question-input');
+    const questionNum = parseInt(input.value);
+
+    if (!questionNum || questionNum < 1 || questionNum > 500) {
+        alert('Please enter a valid question number between 1 and 500');
+        return;
+    }
+
+    // Find the section containing this question
+    const section = app.getSectionForQuestion(questionNum);
+    if (section) {
+        // Calculate section index
+        const sectionIndex = assessmentData.sections.indexOf(section);
+        app.currentSection = sectionIndex;
+        app.renderSectionNav();
+        app.renderQuestions();
+
+        // Close modal
+        closeGotoModal();
+
+        // Scroll to the question after a short delay to let DOM update
+        setTimeout(() => {
+            const questionElement = document.getElementById(`question-${questionNum}`);
+            if (questionElement) {
+                questionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Highlight the question
+                questionElement.classList.add('highlight');
+                setTimeout(() => {
+                    questionElement.classList.remove('highlight');
+                }, 2000);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }, 100);
+    }
+}
+
+// Close modal when clicking outside of it
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('goto-modal');
+    if (modal && event.target === modal) {
+        closeGotoModal();
+    }
+});
+
+// Handle Enter key in input
+document.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        const input = document.getElementById('question-input');
+        if (input && input === document.activeElement) {
+            goToQuestion();
+        }
+    }
+});
+
 // Initialize app
 const app = new AssessmentApp();
+initFloatingNav();
